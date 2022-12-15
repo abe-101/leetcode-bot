@@ -62,7 +62,7 @@ class Neetcode(commands.Cog):
         with open(files[0]) as f:
             code = f.read()
 
-        await interaction.response.send_message(f"```{language}\n{code}\n```")
+        await interaction.response.send_message(f"```{language}\n{code}\n```", ephemeral=True)
 
     @leetcode.autocomplete("language")
     async def leetcode_autocomplete(
