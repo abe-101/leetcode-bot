@@ -1,28 +1,39 @@
 import pathlib
 from typing import List
+import datetime
+from zoneinfo import ZoneInfo
 
 import discord
 import git
 from discord import app_commands
-from discord.ext import commands
+from discord.ext import commands, tasks
 from git.repo.base import Repo
 
 
 class Neetcode(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
+        self.pull_repo.start()
+
+    @tasks.loop(time=datetime.time(hour=22, minute=54, tzinfo=ZoneInfo("America/New_York")))
+    async def pull_repo(self):
+            o = self.repo.remotes.origin
+            o.pull()
+            print("pulled repo on timer")
+
 
     async def cog_load(self) -> None:
         self.neetcode = pathlib.Path("leetcode")
         self.neetcode.mkdir(exist_ok=True)
         try:
-            Repo.clone_from(
-                "https://github.com/self.neetcode-gh/leetcode.git", self.neetcode
+            self.repo = Repo.clone_from(
+                "https://github.com/neetcode-gh/leetcode.git", self.neetcode
             )
             print("cloned repo")
+            self.repo = Repo(self.neetcode)
         except git.exc.GitCommandError:
-            repo = Repo(self.neetcode)
-            o = repo.remotes.origin
+            self.repo = Repo(self.neetcode)
+            o = self.repo.remotes.origin
             o.pull()
             print("pulled repo")
 

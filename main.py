@@ -19,7 +19,7 @@ class Bot(commands.Bot):
         super().__init__(
             command_prefix=commands.when_mentioned_or("?"),
             intents=intents,
-            #activity=discord.Game(name="💻 & ☕"),
+            activity=discord.Game(name="💻"),
         )
 
     async def on_ready(self):
