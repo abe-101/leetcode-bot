@@ -55,7 +55,8 @@ class Neetcode(commands.Cog):
         files = list(self.neetcode.glob(language + "/" + str(number) + "-*"))
         if language not in self.languages or len(files) == 0:
             await interaction.response.send_message(
-                f"there are no solutions for leetcode problem #{number} in {language}"
+                f"there are no solutions for leetcode problem #{number} in {language}",
+                ephemeral=True
             )
             return
 
