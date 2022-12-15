@@ -53,6 +53,7 @@ class Neetcode(commands.Cog):
     ):
         """Returns the leetcode solution"""
         files = list(self.neetcode.glob(language + "/" + str(number) + "-*"))
+        print(f"{interaction.user} asked for problom #{number} in {language}")
         if language not in self.languages or len(files) == 0:
             await interaction.response.send_message(
                 f"there are no solutions for leetcode problem #{number} in {language}",
@@ -62,7 +63,6 @@ class Neetcode(commands.Cog):
 
         with open(files[0]) as f:
             code = f.read()
-        print(f"{interaction.user} asked for problom #{number} in {language}")
         await interaction.response.send_message(f"```{language}\n{code}\n```", ephemeral=True)
 
     @leetcode.autocomplete("language")
