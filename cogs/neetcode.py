@@ -61,7 +61,7 @@ class Neetcode(commands.Cog):
 
         with open(files[0]) as f:
             code = f.read()
-
+        print(f"{interaction.user} asked for problom #{number} in {language}")
         await interaction.response.send_message(f"```{language}\n{code}\n```", ephemeral=True)
 
     @leetcode.autocomplete("language")
