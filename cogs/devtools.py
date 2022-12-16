@@ -59,6 +59,13 @@ class DevTools(commands.Cog):
                 ret += 1
         await ctx.send(f"Synced the tree to {ret}/{len(guilds)}.")
 
+    @commands.command(aliases=['invite'])
+    async def join(self, ctx: Context):
+        """Posts my invite to allow you to invite me"""
+        perms = discord.Permissions.none()
+        await ctx.send(f'<{discord.utils.oauth_url(self.bot.client_id, permissions=perms)}>')
+
+
 
 async def setup(bot):
     _logger.info("Loading DevTools cog")
