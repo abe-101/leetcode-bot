@@ -15,7 +15,7 @@ class Bot(commands.Bot):
         intents = discord.Intents.default()
         intents.message_content = True
         intents.members = True
-        self.client_id = 1052787378718253106
+        self.client_id = None
 
         super().__init__(
             command_prefix=commands.when_mentioned_or("?"),
@@ -26,6 +26,7 @@ class Bot(commands.Bot):
     async def on_ready(self):
         print(f"Logged in as {self.user} (ID: {self.user.id})")
         print("------")
+        self.client_id = self.user.id
 
     async def setup_hook(self) -> None:
         # Load cogs
