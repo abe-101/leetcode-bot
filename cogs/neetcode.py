@@ -10,10 +10,15 @@ from discord.ext import commands, tasks
 from git.repo.base import Repo
 
 
+
 class Neetcode(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
         self.pull_repo.start()
+        self.bot_spam_channels = [
+            1053845551315173397,  # bot-spam -> abes-server
+
+        ]
 
     @tasks.loop(time=datetime.time(hour=22, minute=54, tzinfo=ZoneInfo("America/New_York")))
     async def pull_repo(self):
@@ -63,7 +68,11 @@ class Neetcode(commands.Cog):
 
         with open(files[0]) as f:
             code = f.read()
-        await interaction.response.send_message(f"```{language}\n{code}\n```", ephemeral=True)
+        if interaction.channel_id in self.bot_spam_channels:
+            problem_name = pathlib.Path(files[0].stem).name.replace('-', ' ')
+            await interaction.response.send_message(f"Problem #{problem_name} ({language})\n```{language}\n{code}\n```")
+        else:
+            await interaction.response.send_message(f"```{language}\n{code}\n```", ephemeral=True)
 
     @leetcode.autocomplete("language")
     async def leetcode_autocomplete(
