@@ -17,6 +17,7 @@ class Neetcode(commands.Cog):
         self.pull_repo.start()
         self.bot_spam_channels = [
             1053845551315173397,  # bot-spam -> abes-server
+            1053874909014675576,  # bot-playground -> neetcode
 
         ]
 
