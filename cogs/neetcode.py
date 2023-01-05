@@ -57,16 +57,19 @@ class Neetcode(commands.Cog):
     async def leetcode(
         self, interaction: discord.Interaction, number: int, language: str
     ):
+        # add leading zeros to match file names
+        number = "{:04d}".format(number)
         """Returns the leetcode solution"""
         files = list(self.neetcode.glob(language + "/" + str(number) + "-*"))
-        print(f"{interaction.user} asked for problom #{number} in {language}")
         if language not in self.languages or len(files) == 0:
             await interaction.response.send_message(
                 f"there are no solutions for leetcode problem #{number} in {language}",
                 ephemeral=True
             )
+            print(f"{interaction.user} asked for problom #{number} in {language} but none exist")
             return
 
+        print(f"{interaction.user} asked for problom #{number} in {language}")
         with open(files[0]) as f:
             code = f.read()
         if interaction.channel_id in self.bot_spam_channels:
