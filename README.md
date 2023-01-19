@@ -1,4 +1,7 @@
 # Leetcode bot
+[![Actively Maintained](https://img.shields.io/badge/Maintenance%20Level-Actively%20Maintained-green.svg)](https://gist.github.com/cheerfulstoic/d107229326a01ff0f333a1d3476e068d)
+[![Discord](https://img.shields.io/discord/1017782904509710366)](https://discord.gg/2vqUzSpt6N)
+
 A Discord bot that provides solutions to [leetcode](https://leetcode.com/) problems in over 13 programming languages. Currently active on the NeetCode server, which has a community of over 20,000 developers, and also available for invite to other Discord servers.
 
 ## Servers
