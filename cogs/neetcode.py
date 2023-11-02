@@ -25,7 +25,7 @@ class Neetcode(commands.Cog):
     async def pull_repo(self):
             o = self.repo.remotes.origin
             o.pull()
-            print("pulled repo on timer")
+            self.bot.logger.info("pulled repo on timer")
 
 
     async def cog_load(self) -> None:
@@ -35,13 +35,13 @@ class Neetcode(commands.Cog):
             self.repo = Repo.clone_from(
                 "https://github.com/neetcode-gh/leetcode.git", self.neetcode
             )
-            print("cloned repo")
+            self.bot.logger.info("cloned repo")
             self.repo = Repo(self.neetcode)
         except git.exc.GitCommandError:
             self.repo = Repo(self.neetcode)
             o = self.repo.remotes.origin
             o.pull()
-            print("pulled repo")
+            self.bot.logger.info("pulled repo")
 
         self.languages = [
             x.name
@@ -66,13 +66,13 @@ class Neetcode(commands.Cog):
                 f"there are no solutions for leetcode problem #{number} in {language}",
                 ephemeral=True
             )
-            print(f"{interaction.user} asked for problom #{number} in {language} but none exist")
+            self.bot.logger.info(f"{interaction.user} asked for problom #{number} in {language} but none exist")
             return
 
-        print(f"{interaction.user} asked for problom #{number} in {language}")
+        self.bot.logger.info(f"{interaction.user} asked for problom #{number} in {language}")
         with open(files[0]) as f:
             code = f.read()
-        if interaction.channel_id in self.bot_spam_channels:
+        if interaction.channel_id in self.bot_spam_channels or interaction.channel.name.lower() == "leetcode":
             problem_name = pathlib.Path(files[0].stem).name.replace('-', ' ')
             await interaction.response.send_message(f"Problem #{problem_name} ({language})\n```{language}\n{code}\n```")
         else:
