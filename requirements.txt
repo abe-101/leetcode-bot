@@ -23,6 +23,6 @@ pathspec==0.10.2
 platformdirs==2.5.4
 python-dotenv==0.21.0
 requests==2.28.1
-smmap==5.0.0
+smmap==5.0.1
 urllib3==1.26.12
 yarl==1.8.1
