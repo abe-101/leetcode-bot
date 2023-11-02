@@ -2,4 +2,4 @@ aiohttp==3.8.5
 discord.py==2.3.2
 python-dotenv==1.0.0
 utils==1.0.1
-GitPython==3.1.29
+GitPython==3.1.40
