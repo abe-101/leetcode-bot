@@ -11,10 +11,10 @@ number and the desired programming language. The bot will respond with the solut
 The bot is built using the [Discord.py](https://github.com/Rapptz/discord.py) framework.
 This project is open-source and contributions are welcome!
 
-The bot is Currently active on the NeetCode server, which has a community of over 20,000 developers, and also available for invite to other Discord servers.
+The bot is Currently active on the NeetCode server, which has a community of over 30,000 developers, and also available for invite to other Discord servers.
 
 ## Servers
-Leetcode bot is currently active on the following Discord servers:
+Leetcode bot is currently active on over 25 servers including:
 - [Neetcode](https://discord.gg/ddjKRXPqtk)
 - [Code & Coffee](https://www.codeandcoffee.chat/)
 - [abe's server](https://discord.gg/Bv8XkBSEHP)
