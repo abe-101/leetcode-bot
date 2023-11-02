@@ -2,7 +2,7 @@ aiohttp==3.8.3
 aiosignal==1.2.0
 async-timeout==4.0.2
 attrs==22.1.0
-black==22.10.0
+black==23.10.1
 certifi==2022.9.24
 charset-normalizer==2.1.1
 click==8.1.3
