@@ -1,4 +1,4 @@
-aiohttp==3.9.1
+aiohttp==3.9.3
 discord.py==2.3.2
 python-dotenv==1.0.0
 utils==1.0.1
