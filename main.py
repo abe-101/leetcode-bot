@@ -17,8 +17,6 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 class Bot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
-        intents.message_content = True
-        intents.members = True
         self.client_id = None
 
         super().__init__(
